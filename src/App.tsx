@@ -1,24 +1,8 @@
-import { useState } from 'react'
-import './App.css'
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Debtonator</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Privacy-first debt tracking
-      </p>
-    </>
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center">
+      <h1 className="text-4xl font-bold text-primary-600">Debtonator</h1>
+    </div>
   )
 }
 

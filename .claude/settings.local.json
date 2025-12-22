@@ -15,7 +15,13 @@
       "Bash(printf:*)",
       "Bash(yes:*)",
       "Bash(npm install)",
-      "Bash(timeout 10 npm run dev:*)"
+      "Bash(timeout 10 npm run dev:*)",
+      "Bash(npm run build:*)",
+      "Bash(timeout 5 npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(./node_modules/.bin/tailwindcss:*)",
+      "Bash(pkill:*)"
     ],
     "deny": [],
     "ask": []

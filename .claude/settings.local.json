@@ -21,7 +21,9 @@
       "Bash(npm install:*)",
       "Bash(npx tailwindcss:*)",
       "Bash(./node_modules/.bin/tailwindcss:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npm test:*)"
     ],
     "deny": [],
     "ask": []

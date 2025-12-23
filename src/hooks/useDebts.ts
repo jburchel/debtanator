@@ -1,6 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { debtRepository } from '@/lib/repository'
-import type { Debt } from '@/lib/types'
 import type { DebtInput } from '@/lib/validation'
 
 export function useDebts() {

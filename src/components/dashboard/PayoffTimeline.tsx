@@ -45,7 +45,7 @@ export function PayoffTimeline({ schedule }: PayoffTimelineProps) {
             tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
           />
           <Tooltip
-            formatter={(value: number) => [formatCurrency(value * 100), 'Balance']}
+            formatter={(value) => [formatCurrency((value as number) * 100), 'Balance']}
             labelFormatter={(label) => label}
           />
           <Area

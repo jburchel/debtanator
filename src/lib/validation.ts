@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const debtSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100),
   balance: z.number().min(1, 'Balance must be at least $0.01'),
-  interestRate: z.number().min(0, 'Interest rate cannot be negative').max(1, 'Interest rate cannot exceed 100%'),
+  interestRate: z.number().min(0, 'Interest rate cannot be negative').max(100, 'Interest rate cannot exceed 100%'),
   minimumPayment: z.number().min(0, 'Minimum payment cannot be negative'),
   category: z.string().optional(),
   color: z.string().optional(),

@@ -24,7 +24,8 @@
       "Bash(pkill:*)",
       "Bash(npx vitest:*)",
       "Bash(npm test:*)",
-      "Bash(npm run lint:*)"
+      "Bash(npm run lint:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

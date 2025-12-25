@@ -1,0 +1,14 @@
+import { describe, it, expect } from 'vitest'
+import { cn } from './utils'
+
+describe('cn utility', () => {
+  it('merges class names', () => {
+    const result = cn('foo', 'bar')
+    expect(result).toBe('foo bar')
+  })
+
+  it('handles conditional classes', () => {
+    const result = cn('base', false && 'hidden', 'always')
+    expect(result).toBe('base always')
+  })
+})

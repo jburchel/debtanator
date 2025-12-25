@@ -38,13 +38,16 @@ export async function createHousehold(userId: string, name: string): Promise<Hou
   if (error) throw error
 
   // Add owner as admin member
-  await supabase.from('household_members').insert({
+  const { error: memberError } = await supabase.from('household_members').insert({
     household_id: data.id,
     user_id: userId,
     role: 'admin',
     status: 'accepted',
     joined_at: new Date().toISOString(),
   })
+  if (memberError) {
+    console.error('Failed to add owner as member:', memberError)
+  }
 
   return data
 }

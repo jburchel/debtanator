@@ -1,9 +1,11 @@
+import { Button } from '@/components/ui/button'
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-        Envelope Budget
-      </h1>
+    <div className="min-h-screen bg-background flex items-center justify-center gap-4">
+      <Button variant="default">Primary</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="destructive">Destructive</Button>
     </div>
   )
 }

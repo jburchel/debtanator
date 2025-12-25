@@ -1,9 +1,10 @@
 import { useTransactions } from '@/hooks/use-transactions'
 import { useDeleteTransaction } from '@/hooks/use-transactions'
+import { useAuthStore } from '@/stores/auth-store'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
 import { format } from 'date-fns'
-import { Trash2 } from 'lucide-react'
+import { Trash2, User } from 'lucide-react'
 
 interface TransactionListProps {
   envelopeId?: string
@@ -11,6 +12,7 @@ interface TransactionListProps {
 }
 
 export function TransactionList({ envelopeId, limit }: TransactionListProps) {
+  const { user } = useAuthStore()
   const { data: transactions, isLoading } = useTransactions({ envelopeId, limit })
   const deleteTransaction = useDeleteTransaction()
 
@@ -55,10 +57,16 @@ export function TransactionList({ envelopeId, limit }: TransactionListProps) {
                 {tx.merchant || tx.description || 'Transaction'}
               </span>
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-muted-foreground flex items-center gap-1">
               {format(new Date(tx.date), 'MMM d, yyyy')}
               {tx.description && tx.merchant && (
-                <span className="ml-2">• {tx.description}</span>
+                <span>• {tx.description}</span>
+              )}
+              {tx.created_by && tx.created_by !== user?.id && (
+                <span className="inline-flex items-center gap-0.5 ml-1 text-xs bg-muted px-1.5 py-0.5 rounded">
+                  <User className="h-3 w-3" />
+                  Family
+                </span>
               )}
             </div>
           </div>

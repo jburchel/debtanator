@@ -1,0 +1,131 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "back": "Back",
+    "continue": "Continue",
+    "getStarted": "Get Started",
+    "signOut": "Sign Out"
+  },
+  "currency": {
+    "symbol": "$"
+  },
+  "auth": {
+    "login": "Login",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "emailPlaceholder": "you@example.com",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signInError": "Invalid email or password"
+  },
+  "home": {
+    "envelopes": "Envelopes",
+    "envelopesDescription": "Click an envelope to view details"
+  },
+  "budget": {
+    "budgeted": "Budgeted",
+    "spent": "Spent",
+    "available": "Available",
+    "incomeAllocation": "Income Allocation",
+    "setIncome": "Set Income",
+    "monthlyIncome": "Set Monthly Income",
+    "monthlyIncomeDescription": "Enter your total income for this month. This helps you ensure every dollar is assigned to an envelope.",
+    "fullyAllocated": "Fully allocated!",
+    "overBy": "Over by {{amount}}",
+    "remaining": "{{amount}} left",
+    "allocated": "{{allocated}} of {{total}} allocated",
+    "setIncomePrompt": "Set your monthly income to start budgeting"
+  },
+  "envelopes": {
+    "createEnvelope": "Create Envelope",
+    "newEnvelope": "New Envelope",
+    "envelopeName": "Envelope Name",
+    "emoji": "Emoji",
+    "noEnvelopes": "No envelopes yet. Create one to get started!",
+    "spent": "{{amount}} spent",
+    "left": "{{amount}} left",
+    "over": "{{amount}} over",
+    "allocation": "Allocation",
+    "recentTransactions": "Recent Transactions"
+  },
+  "transactions": {
+    "addTransaction": "Add Transaction",
+    "newTransaction": "New Transaction",
+    "amount": "Amount",
+    "merchant": "Merchant",
+    "description": "Description",
+    "date": "Date",
+    "envelope": "Envelope",
+    "selectEnvelope": "Select an envelope",
+    "noTransactions": "No transactions yet",
+    "family": "Family"
+  },
+  "onboarding": {
+    "welcome": "Welcome to Envelope Budget! 👋",
+    "welcomeDescription": "Let's set up your budget in just a few steps. We'll help you organize your money using the envelope method.",
+    "envelopeMethod": "The envelope method helps you give every dollar a job, so you always know where your money is going.",
+    "monthlyIncome": "What's your monthly income?",
+    "monthlyIncomeDescription": "Enter your total take-home pay for the month. This helps us suggest envelope allocations.",
+    "chooseEnvelopes": "Choose your envelopes",
+    "chooseEnvelopesDescription": "Select the categories you want to budget for. You can add more later.",
+    "allocateBudget": "Allocate your budget",
+    "allocateBudgetDescription": "Assign money to each envelope. We've suggested amounts based on common budgeting guidelines.",
+    "allSet": "You're all set! 🎉",
+    "allSetDescription": "Your budget is ready. Start tracking your expenses and watch your financial goals come to life.",
+    "budgetSummary": "Your budget summary:",
+    "envelopesAllocated": "{{count}} envelopes • {{amount}} allocated",
+    "goToDashboard": "Go to Dashboard",
+    "completeSetup": "Complete Setup",
+    "creating": "Creating...",
+    "saving": "Saving..."
+  },
+  "settings": {
+    "title": "Settings",
+    "account": "Account",
+    "accountDescription": "Manage your account settings",
+    "theme": "Theme",
+    "themeDescription": "Choose your preferred theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "language": "Language",
+    "languageDescription": "Choose your preferred language",
+    "householdMembers": "Household Members",
+    "invite": "Invite",
+    "inviteMember": "Invite Family Member",
+    "inviteDescription": "Send an invitation to join your household budget.",
+    "emailAddress": "Email address",
+    "sendInvite": "Send Invite",
+    "sending": "Sending...",
+    "owner": "Owner",
+    "pendingInvite": "Pending invite",
+    "member": "member",
+    "members": "{{count}} member(s)"
+  },
+  "envelopeTemplates": {
+    "housing": "Housing",
+    "groceries": "Groceries",
+    "transportation": "Transportation",
+    "utilities": "Utilities",
+    "healthcare": "Healthcare",
+    "entertainment": "Entertainment",
+    "diningOut": "Dining Out",
+    "savings": "Savings",
+    "clothing": "Clothing",
+    "personalCare": "Personal Care",
+    "gifts": "Gifts",
+    "miscellaneous": "Miscellaneous"
+  },
+  "errors": {
+    "notFound": "Page Not Found",
+    "notFoundDescription": "The page you're looking for doesn't exist.",
+    "goHome": "Go Home"
+  }
+}

@@ -5,21 +5,25 @@ import { QueryProvider } from '@/components/providers/QueryProvider'
 import { AuthProvider } from '@/components/providers/AuthProvider'
 import { HouseholdProvider } from '@/components/providers/HouseholdProvider'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { ErrorBoundary } from '@/components/error/ErrorBoundary'
 import App from './App.tsx'
+import '@/lib/i18n'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider>
-      <BrowserRouter>
-        <QueryProvider>
-          <AuthProvider>
-            <HouseholdProvider>
-              <App />
-            </HouseholdProvider>
-          </AuthProvider>
-        </QueryProvider>
-      </BrowserRouter>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <BrowserRouter>
+          <QueryProvider>
+            <AuthProvider>
+              <HouseholdProvider>
+                <App />
+              </HouseholdProvider>
+            </AuthProvider>
+          </QueryProvider>
+        </BrowserRouter>
+      </ThemeProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
 )

@@ -1,0 +1,131 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "back": "Atrás",
+    "continue": "Continuar",
+    "getStarted": "Comenzar",
+    "signOut": "Cerrar sesión"
+  },
+  "currency": {
+    "symbol": "$"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "noAccount": "¿No tienes una cuenta?",
+    "hasAccount": "¿Ya tienes una cuenta?",
+    "signInError": "Correo o contraseña inválidos"
+  },
+  "home": {
+    "envelopes": "Sobres",
+    "envelopesDescription": "Haz clic en un sobre para ver detalles"
+  },
+  "budget": {
+    "budgeted": "Presupuestado",
+    "spent": "Gastado",
+    "available": "Disponible",
+    "incomeAllocation": "Asignación de Ingresos",
+    "setIncome": "Establecer Ingreso",
+    "monthlyIncome": "Establecer Ingreso Mensual",
+    "monthlyIncomeDescription": "Ingresa tu ingreso total para este mes. Esto te ayuda a asegurar que cada dólar esté asignado a un sobre.",
+    "fullyAllocated": "¡Completamente asignado!",
+    "overBy": "Excedido por {{amount}}",
+    "remaining": "{{amount}} restante",
+    "allocated": "{{allocated}} de {{total}} asignado",
+    "setIncomePrompt": "Establece tu ingreso mensual para comenzar a presupuestar"
+  },
+  "envelopes": {
+    "createEnvelope": "Crear Sobre",
+    "newEnvelope": "Nuevo Sobre",
+    "envelopeName": "Nombre del Sobre",
+    "emoji": "Emoji",
+    "noEnvelopes": "Aún no hay sobres. ¡Crea uno para comenzar!",
+    "spent": "{{amount}} gastado",
+    "left": "{{amount}} restante",
+    "over": "{{amount}} excedido",
+    "allocation": "Asignación",
+    "recentTransactions": "Transacciones Recientes"
+  },
+  "transactions": {
+    "addTransaction": "Agregar Transacción",
+    "newTransaction": "Nueva Transacción",
+    "amount": "Monto",
+    "merchant": "Comercio",
+    "description": "Descripción",
+    "date": "Fecha",
+    "envelope": "Sobre",
+    "selectEnvelope": "Selecciona un sobre",
+    "noTransactions": "Aún no hay transacciones",
+    "family": "Familia"
+  },
+  "onboarding": {
+    "welcome": "¡Bienvenido a Envelope Budget! 👋",
+    "welcomeDescription": "Configuremos tu presupuesto en unos pocos pasos. Te ayudaremos a organizar tu dinero usando el método de sobres.",
+    "envelopeMethod": "El método de sobres te ayuda a asignar un trabajo a cada dólar, para que siempre sepas a dónde va tu dinero.",
+    "monthlyIncome": "¿Cuál es tu ingreso mensual?",
+    "monthlyIncomeDescription": "Ingresa tu sueldo neto total del mes. Esto nos ayuda a sugerir asignaciones para los sobres.",
+    "chooseEnvelopes": "Elige tus sobres",
+    "chooseEnvelopesDescription": "Selecciona las categorías que quieres presupuestar. Puedes agregar más después.",
+    "allocateBudget": "Asigna tu presupuesto",
+    "allocateBudgetDescription": "Asigna dinero a cada sobre. Hemos sugerido montos basados en pautas comunes de presupuesto.",
+    "allSet": "¡Todo listo! 🎉",
+    "allSetDescription": "Tu presupuesto está listo. Comienza a rastrear tus gastos y observa cómo tus metas financieras cobran vida.",
+    "budgetSummary": "Resumen de tu presupuesto:",
+    "envelopesAllocated": "{{count}} sobres • {{amount}} asignado",
+    "goToDashboard": "Ir al Panel",
+    "completeSetup": "Completar Configuración",
+    "creating": "Creando...",
+    "saving": "Guardando..."
+  },
+  "settings": {
+    "title": "Configuración",
+    "account": "Cuenta",
+    "accountDescription": "Administra la configuración de tu cuenta",
+    "theme": "Tema",
+    "themeDescription": "Elige tu tema preferido",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "themeSystem": "Sistema",
+    "language": "Idioma",
+    "languageDescription": "Elige tu idioma preferido",
+    "householdMembers": "Miembros del Hogar",
+    "invite": "Invitar",
+    "inviteMember": "Invitar Familiar",
+    "inviteDescription": "Envía una invitación para unirse al presupuesto de tu hogar.",
+    "emailAddress": "Dirección de correo",
+    "sendInvite": "Enviar Invitación",
+    "sending": "Enviando...",
+    "owner": "Propietario",
+    "pendingInvite": "Invitación pendiente",
+    "member": "miembro",
+    "members": "{{count}} miembro(s)"
+  },
+  "envelopeTemplates": {
+    "housing": "Vivienda",
+    "groceries": "Compras",
+    "transportation": "Transporte",
+    "utilities": "Servicios",
+    "healthcare": "Salud",
+    "entertainment": "Entretenimiento",
+    "diningOut": "Restaurantes",
+    "savings": "Ahorros",
+    "clothing": "Ropa",
+    "personalCare": "Cuidado Personal",
+    "gifts": "Regalos",
+    "miscellaneous": "Varios"
+  },
+  "errors": {
+    "notFound": "Página No Encontrada",
+    "notFoundDescription": "La página que buscas no existe.",
+    "goHome": "Ir al Inicio"
+  }
+}

@@ -1,7 +1,8 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { useAuthStore } from '@/stores/auth-store'
 import { useHouseholdStore } from '@/stores/household-store'
 import { useOnboarding } from '@/hooks/use-onboarding'
+import { useRealtimeSubscriptions } from '@/hooks/use-realtime'
 import { EnvelopeList } from '@/components/envelopes/EnvelopeList'
 import { BudgetPeriodSelector } from '@/components/budget/BudgetPeriodSelector'
 import { BudgetSummary } from '@/components/dashboard/BudgetSummary'
@@ -9,17 +10,15 @@ import { IncomeAllocationBar } from '@/components/dashboard/IncomeAllocationBar'
 import { QuickAddFab } from '@/components/transactions/QuickAddFab'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
 import { Button } from '@/components/ui/button'
-import { supabase } from '@/lib/supabase'
-import { LogOut } from 'lucide-react'
+import { Settings } from 'lucide-react'
 
 export function Home() {
   const { user } = useAuthStore()
   const { household, loading } = useHouseholdStore()
   const { needsOnboarding, isLoading: onboardingLoading } = useOnboarding()
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut()
-  }
+  // Enable real-time updates for family sharing
+  useRealtimeSubscriptions()
 
   if (loading || onboardingLoading) {
     return (
@@ -44,8 +43,10 @@ export function Home() {
           <div className="flex items-center gap-2">
             <BudgetPeriodSelector />
             <ThemeToggle />
-            <Button variant="ghost" size="icon" onClick={handleLogout}>
-              <LogOut className="h-5 w-5" />
+            <Button variant="ghost" size="icon" asChild>
+              <Link to="/settings">
+                <Settings className="h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Home } from '@/pages/Home'
 import { Login } from '@/pages/Login'
 import { Onboarding } from '@/pages/Onboarding'
+import { Settings } from '@/pages/Settings'
 import { EnvelopeDetail } from '@/pages/EnvelopeDetail'
 import { NotFound } from '@/pages/NotFound'
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
@@ -23,6 +24,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Onboarding />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <Settings />
           </ProtectedRoute>
         }
       />

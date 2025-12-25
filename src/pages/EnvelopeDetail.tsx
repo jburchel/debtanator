@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 import {
   Dialog,
   DialogContent,
@@ -27,9 +28,9 @@ export function EnvelopeDetail() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
 
-  const { data: envelopes } = useEnvelopes()
+  const { data: envelopes, isLoading: envelopesLoading } = useEnvelopes()
   const { data: period } = useSelectedBudgetPeriod()
-  const { data: balances } = useEnvelopeBalances(period?.id)
+  const { data: balances, isLoading: balancesLoading } = useEnvelopeBalances(period?.id)
   const deleteEnvelope = useDeleteEnvelope()
   const upsertAllocation = useUpsertAllocation()
 
@@ -40,6 +41,24 @@ export function EnvelopeDetail() {
 
   const envelope = envelopes?.find((e) => e.id === id)
   const balance = balances?.find((b) => b.id === id)
+  const isLoading = envelopesLoading || balancesLoading
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <header className="border-b">
+          <div className="container mx-auto px-4 py-4 flex items-center gap-4">
+            <Skeleton className="h-10 w-10" />
+            <Skeleton className="h-8 w-48" />
+          </div>
+        </header>
+        <main className="container mx-auto px-4 py-8 space-y-6">
+          <Skeleton className="h-48" />
+          <Skeleton className="h-64" />
+        </main>
+      </div>
+    )
+  }
 
   if (!envelope) {
     return (

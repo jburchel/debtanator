@@ -1,5 +1,7 @@
+import { Navigate } from 'react-router-dom'
 import { useAuthStore } from '@/stores/auth-store'
 import { useHouseholdStore } from '@/stores/household-store'
+import { useOnboarding } from '@/hooks/use-onboarding'
 import { EnvelopeList } from '@/components/envelopes/EnvelopeList'
 import { BudgetPeriodSelector } from '@/components/budget/BudgetPeriodSelector'
 import { BudgetSummary } from '@/components/dashboard/BudgetSummary'
@@ -13,17 +15,22 @@ import { LogOut } from 'lucide-react'
 export function Home() {
   const { user } = useAuthStore()
   const { household, loading } = useHouseholdStore()
+  const { needsOnboarding, isLoading: onboardingLoading } = useOnboarding()
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
   }
 
-  if (loading) {
+  if (loading || onboardingLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <p>Loading...</p>
       </div>
     )
+  }
+
+  if (needsOnboarding) {
+    return <Navigate to="/onboarding" replace />
   }
 
   return (

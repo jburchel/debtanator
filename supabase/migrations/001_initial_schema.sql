@@ -1,9 +1,6 @@
--- Enable UUID extension
-create extension if not exists "uuid-ossp";
-
 -- Households table
 create table households (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text not null,
   owner_id uuid references auth.users(id) on delete cascade not null,
   created_at timestamptz default now() not null
@@ -11,7 +8,7 @@ create table households (
 
 -- Household members table
 create table household_members (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   household_id uuid references households(id) on delete cascade not null,
   user_id uuid references auth.users(id) on delete cascade,
   role text check (role in ('admin', 'member')) default 'member' not null,
@@ -25,7 +22,7 @@ create table household_members (
 
 -- Budget periods table
 create table budget_periods (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   household_id uuid references households(id) on delete cascade not null,
   year integer not null,
   month integer check (month >= 1 and month <= 12) not null,
@@ -36,7 +33,7 @@ create table budget_periods (
 
 -- Envelopes table
 create table envelopes (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   household_id uuid references households(id) on delete cascade not null,
   name text not null,
   emoji text,
@@ -48,7 +45,7 @@ create table envelopes (
 
 -- Envelope allocations table
 create table envelope_allocations (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   envelope_id uuid references envelopes(id) on delete cascade not null,
   budget_period_id uuid references budget_periods(id) on delete cascade not null,
   allocated_amount numeric(12,2) default 0 not null,
@@ -59,7 +56,7 @@ create table envelope_allocations (
 
 -- Transactions table
 create table transactions (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   household_id uuid references households(id) on delete cascade not null,
   envelope_id uuid references envelopes(id) on delete set null,
   amount numeric(12,2) not null,
@@ -72,7 +69,7 @@ create table transactions (
 
 -- User preferences table
 create table user_preferences (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade unique not null,
   theme text check (theme in ('light', 'dark', 'system')) default 'system' not null,
   language text default 'en' not null,

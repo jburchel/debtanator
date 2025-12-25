@@ -21,7 +21,16 @@
       "Bash(npx shadcn@latest init:*)",
       "Bash(npx shadcn@latest add:*)",
       "Bash(npm run test:run:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(lsof:*)",
+      "Bash(claude mcp list-tools:*)",
+      "Bash(supabase --version:*)",
+      "Bash(supabase status:*)",
+      "Bash(supabase init:*)",
+      "Bash(supabase link:*)",
+      "Bash(supabase projects list:*)",
+      "Bash(supabase db push:*)",
+      "Bash(supabase gen types:*)"
     ]
   }
 }

@@ -1,12 +1,15 @@
-import { Button } from '@/components/ui/button'
+import { Routes, Route } from 'react-router-dom'
+import { Home } from '@/pages/Home'
+import { Login } from '@/pages/Login'
+import { NotFound } from '@/pages/NotFound'
 
 function App() {
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center gap-4">
-      <Button variant="default">Primary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="destructive">Destructive</Button>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   )
 }
 

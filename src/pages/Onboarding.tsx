@@ -40,6 +40,7 @@ export function Onboarding() {
   const [allocations, setAllocations] = useState<Record<string, string>>({})
   const [createdEnvelopeIds, setCreatedEnvelopeIds] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const steps: Step[] = ['welcome', 'income', 'envelopes', 'allocate', 'complete']
   const currentStepIndex = steps.indexOf(step)
@@ -57,61 +58,75 @@ export function Onboarding() {
 
   const handleCreateEnvelopes = async () => {
     setIsSubmitting(true)
+    setError(null)
     const ids: Record<string, string> = {}
 
-    for (const name of selectedTemplates) {
-      const template = ENVELOPE_TEMPLATES.find((t) => t.name === name)
-      if (template) {
-        const result = await createEnvelope.mutateAsync({
-          name: template.name,
-          emoji: template.emoji,
-        })
-        ids[name] = result.id
+    try {
+      for (const name of selectedTemplates) {
+        const template = ENVELOPE_TEMPLATES.find((t) => t.name === name)
+        if (template) {
+          const result = await createEnvelope.mutateAsync({
+            name: template.name,
+            emoji: template.emoji,
+          })
+          ids[name] = result.id
 
-        // Pre-fill allocation based on income percentage
-        const incomeNum = parseFloat(income) || 0
-        const suggestedAmount = Math.round((template.suggested / 100) * incomeNum)
-        setAllocations((prev) => ({ ...prev, [name]: String(suggestedAmount) }))
+          // Pre-fill allocation based on income percentage
+          const incomeNum = parseFloat(income) || 0
+          const suggestedAmount = Math.round((template.suggested / 100) * incomeNum)
+          setAllocations((prev) => ({ ...prev, [name]: String(suggestedAmount) }))
+        }
       }
-    }
 
-    setCreatedEnvelopeIds(ids)
-    setIsSubmitting(false)
-    setStep('allocate')
+      setCreatedEnvelopeIds(ids)
+      setStep('allocate')
+    } catch (err) {
+      console.error('Failed to create envelopes:', err)
+      setError(err instanceof Error ? err.message : 'Failed to create envelopes')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleSaveAllocations = async () => {
     setIsSubmitting(true)
+    setError(null)
 
-    const now = new Date()
-    const period = await getOrCreatePeriod.mutateAsync({
-      year: now.getFullYear(),
-      month: now.getMonth() + 1,
-    })
-
-    // Save income
-    const incomeNum = parseFloat(income) || 0
-    if (incomeNum > 0) {
-      await updateBudgetPeriod.mutateAsync({
-        id: period.id,
-        total_income: incomeNum,
+    try {
+      const now = new Date()
+      const period = await getOrCreatePeriod.mutateAsync({
+        year: now.getFullYear(),
+        month: now.getMonth() + 1,
       })
-    }
 
-    // Save allocations
-    for (const [name, amount] of Object.entries(allocations)) {
-      const envelopeId = createdEnvelopeIds[name]
-      if (envelopeId && amount) {
-        await upsertAllocation.mutateAsync({
-          envelope_id: envelopeId,
-          budget_period_id: period.id,
-          allocated_amount: parseFloat(amount) || 0,
+      // Save income
+      const incomeNum = parseFloat(income) || 0
+      if (incomeNum > 0) {
+        await updateBudgetPeriod.mutateAsync({
+          id: period.id,
+          total_income: incomeNum,
         })
       }
-    }
 
-    setIsSubmitting(false)
-    setStep('complete')
+      // Save allocations
+      for (const [name, amount] of Object.entries(allocations)) {
+        const envelopeId = createdEnvelopeIds[name]
+        if (envelopeId && amount) {
+          await upsertAllocation.mutateAsync({
+            envelope_id: envelopeId,
+            budget_period_id: period.id,
+            allocated_amount: parseFloat(amount) || 0,
+          })
+        }
+      }
+
+      setStep('complete')
+    } catch (err) {
+      console.error('Failed to save allocations:', err)
+      setError(err instanceof Error ? err.message : 'Failed to save allocations')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const totalAllocated = Object.values(allocations).reduce(
@@ -280,6 +295,12 @@ export function Onboarding() {
                   {selectedTemplates.size} envelopes • {formatCurrency(totalAllocated)} allocated
                 </p>
               </div>
+            </div>
+          )}
+
+          {error && (
+            <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+              <p className="text-sm text-destructive">{error}</p>
             </div>
           )}
         </CardContent>
